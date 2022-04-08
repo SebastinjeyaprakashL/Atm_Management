@@ -2,6 +2,8 @@ package myAtm;
 
 import java.util.ArrayList;
 
+import consoleInputOutput.UserOutput;
+
 public class Bank {
 	private String bankName;
 	private ArrayList <User> users;
@@ -16,18 +18,25 @@ public class Bank {
 	}
 
 	public User addUser(int userId, String name, long cardNumber, int pin) {
-		User newUser = new User (userId,name);
-		this.users.add(newUser);
-		
-		Account newUserAccount = new Account (newUser,this, 1000);
-		this.accounts.add(newUserAccount);
-		
-		DebitCard newDebitCard = new DebitCard (newUser,newUserAccount,cardNumber, pin);
-		this.debitCards.add(newDebitCard);
-		
-		newUser.addAccount(newUserAccount);
-		newUserAccount.addDebitCard(newDebitCard);
-		return newUser;
+		try {
+			User newUser = new User (userId,name);
+			this.users.add(newUser);
+			
+			Account newUserAccount = new Account (newUser,this, 1000);
+			this.accounts.add(newUserAccount);
+			
+			DebitCard newDebitCard = new DebitCard (newUser,newUserAccount,cardNumber, pin);
+			this.debitCards.add(newDebitCard);
+			
+			newUser.addAccount(newUserAccount);
+			newUserAccount.addDebitCard(newDebitCard);
+			return newUser;
+		}
+		catch (Exception e) {
+			UserOutput.consoleStringPrinter("Invalid Input");
+			e.printStackTrace();
+			return null;
+		}	
 	}
 
 	public Account getAccountByCard(long cardNumber, int pin) {		

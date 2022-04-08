@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import consoleInputOutput.UserOutput;
+
 public class DebitCard {
 	
 	private Long cardNumber;
@@ -23,13 +25,22 @@ public class DebitCard {
 	}
 	
 	public String getExpiryDate () {
-		Date date = new Date();
-	    Calendar c = Calendar.getInstance();
-	    c.setTime(date);
-	    c.add(Calendar.YEAR, 10);
-	    Date newDate = c.getTime();
-	    SimpleDateFormat formatter = new SimpleDateFormat("MM/yyyy");
-	    return formatter.format(newDate);
+		try {
+			Date date = new Date();
+		    Calendar c = Calendar.getInstance();
+		    c.setTime(date);
+		    c.add(Calendar.YEAR, 10);
+		    Date newDate = c.getTime();
+		    SimpleDateFormat formatter = new SimpleDateFormat("MM/yyyy");
+		    return formatter.format(newDate);
+		}
+		catch (Exception e) {
+			UserOutput.consoleStringPrinter("Invalid Input");
+			e.printStackTrace();
+			return null;
+		}
+		
+	    
 	}
 
 	public int getDebitPin() {
