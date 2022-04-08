@@ -1,0 +1,2 @@
+module atm_management {
+}
