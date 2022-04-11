@@ -45,10 +45,10 @@ public class Atm {
 		AtmTransaction newTransaction =new AtmTransaction(account);
 		switch (choice) {
 		case 1 : 
-			newTransaction.withdraw(account);
+			Withdraw withdraw = new Withdraw(account);
 			break;
 		case 2 :
-			newTransaction.deposit (account);
+			Deposit deposit = new Deposit(account);
 			break;
 		case 3 :
 			newTransaction.checkBalance (account);
@@ -72,7 +72,6 @@ public class Atm {
 		
 		while(true) {
 			currentAccount = Atm.mainMenu(bank);
-			//System.out.println(currentUser.getUserId());
 			Atm.printUserMenu(currentAccount);
 		}
 		
