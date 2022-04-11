@@ -35,7 +35,6 @@ public class DebitCard {
 		    return formatter.format(newDate);
 		}
 		catch (Exception e) {
-			UserOutput.consoleStringPrinter("Invalid Input");
 			e.printStackTrace();
 			return null;
 		}
