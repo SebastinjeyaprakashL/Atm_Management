@@ -11,10 +11,15 @@ public class User {
 	private ArrayList <Account> accounts ;
 	
 	public User(int userId, String name) {
-		this.userId = userId;
-		this.name = name;
-		this.accounts = new ArrayList<Account>();
-		UserOutput.consoleStringPrinter("New User created with Id : "+userId+" for user : "+ name);
+		try {
+			this.userId = userId;
+			this.name = name;
+			this.accounts = new ArrayList<Account>();
+			UserOutput.consoleStringPrinter("New User created with Id : "+userId+" for user : "+ name);
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void addAccount(Account newUserAccount) {
