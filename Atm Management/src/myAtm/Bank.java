@@ -39,17 +39,22 @@ public class Bank {
 		}	
 	}
 
-	public Account getAccountByCard(long cardNumber, int pin) {		
-		int accountId;
-		for (DebitCard d : this.debitCards) {
-			if (d.getDebitCardNumber() == cardNumber && d.getDebitPin() == pin ) {
-				accountId = d.getAccounId();
-				for (Account account : this.accounts) {
-					if (account.getAccountId() == accountId) {
-						return account;
+	public Account getAccountByCard(long cardNumber, int pin) {	
+		try {
+			int accountId;
+			for (DebitCard d : this.debitCards) {
+				if (d.getDebitCardNumber() == cardNumber && d.getDebitPin() == pin ) {
+					accountId = d.getAccounId();
+					for (Account account : this.accounts) {
+						if (account.getAccountId() == accountId) {
+							return account;
+						}
 					}
 				}
 			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
 		}
 		return null;
 	}	
